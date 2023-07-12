@@ -1,0 +1,210 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 Int        @id @default(autoincrement())
+  name               String
+  email              String     @unique
+  password           String
+  phoneNumber        Int?
+  role               String     @default("user")
+  createdAt          DateTime   @default(now())
+  resetPasswordToken String?
+  resetPasswordTime  DateTime?
+  avatar             Avatar     @relation(fields: [avatarId], references: [id])
+  avatarId           Int
+  Withdraw           Withdraw[]
+  addresses          Address[]
+}
+
+model Address {
+  id          Int     @id @default(autoincrement())
+  country     String
+  city        String
+  address1    String
+  address2    String?
+  zipCode     Int
+  addressType String
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+}
+
+model Avatar {
+  id       Int    @id @default(autoincrement())
+  publicId String
+  url      String
+
+  users User[]
+}
+
+model Product {
+  id            Int      @id @default(autoincrement())
+  name          String
+  description   String
+  category      String
+  tags          String?
+  originalPrice Float?
+  discountPrice Float
+  stock         Int
+  images        Image[]
+  reviews       Review[]
+
+  ratings   Float?
+  shopId    Int
+  shop      Shop     @relation(fields: [shopId], references: [id])
+  soldOut   Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model Image {
+  id        Int     @id @default(autoincrement())
+  publicId  String
+  url       String
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  user      Json
+  rating    Float?
+  comment   String?
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Shop {
+  id                 Int           @id @default(autoincrement())
+  name               String
+  email              String        @unique
+  password           String
+  description        String?
+  address            String
+  phoneNumber        Int
+  role               String        @default("Seller")
+  avatarPublicId     String
+  avatarUrl          String
+  zipCode            Int
+  withdrawMethod     Json?
+  availableBalance   Int           @default(0)
+  createdAt          DateTime      @default(now())
+  resetPasswordToken String?
+  resetPasswordTime  DateTime?
+  products           Product[]
+  transections       Transection[]
+  couponcode         Couponcode[]
+}
+
+model Transection {
+  id        Int       @id @default(autoincrement())
+  amount    Int
+  status    String    @default("Processing")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+
+  shopId Int
+  shop   Shop @relation(fields: [shopId], references: [id])
+}
+
+model Order {
+  id              Int           @id @default(autoincrement())
+  cart            Json
+  shippingAddress Json
+  user            Json
+  totalPrice      Float
+  status          String        @default("Processing")
+  paymentInfo     PaymentInfo[]
+  paidAt          DateTime      @default(now())
+  deliveredAt     DateTime?
+  createdAt       DateTime      @default(now())
+}
+
+model PaymentInfo {
+  id      Int    @id @default(autoincrement())
+  status  String
+  type    String
+  orderId Int
+  order   Order  @relation(fields: [id], references: [id])
+}
+
+model Event {
+  id            Int      @id @default(autoincrement())
+  name          String
+  description   String
+  category      String
+  start_Date    DateTime
+  Finish_Date   DateTime
+  status        String   @default("Running")
+  tags          String?
+  originalPrice Float?
+  discountPrice Float
+  stock         Int
+  images        Json
+  shopId        String
+  shop          Json
+  sold_out      Int      @default(0)
+  createdAt     DateTime @default(now())
+}
+
+model Withdraw {
+  id        Int      @id @default(autoincrement())
+  sellerId  Int
+  seller    User     @relation(fields: [id], references: [id])
+  amount    Float
+  status    String   @default("Processing")
+  updatedAt DateTime @default(now()) @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("withdraw")
+}
+
+model Message {
+  id             Int            @id @default(autoincrement())
+  conversationId String
+  text           String
+  sender         String
+  images         Json
+  conversation   Conversation[]
+  updatedAt      DateTime       @default(now()) @map("updated_at")
+  createdAt      DateTime       @default(now()) @map("created_at")
+
+  @@map("messages")
+}
+
+model Couponcode {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  value     Float
+  minAmount Float
+  maxAmount Float
+  shopId    Int
+  shop      Shop  @relation(fields: [id], references: [id])
+
+  selectedProduct String
+  updatedAt       DateTime @default(now()) @map("updated_at")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@map("couponcodes")
+}
+
+model Conversation {
+  id            Int     @id @default(autoincrement())
+  groupTitle    String
+  lastMessageId Int
+  lastMessage   Message @relation(fields: [id], references: [id])
+  members       String
+
+  updatedAt DateTime @default(now()) @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("conversations")
+}

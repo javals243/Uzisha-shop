@@ -31,7 +31,7 @@ const ShopCreate = () => {
         phoneNumber,
       })
       .then((res) => {
-        toast.success(res.data.message);
+        toast.success("your shop has been successfully created");
         setName("");
         setEmail("");
         setPassword("");

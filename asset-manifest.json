@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Uzisha-shop/static/css/main.95fb8764.css",
+    "main.js": "/Uzisha-shop/static/js/main.f9140ee2.js",
+    "static/js/787.cda612ba.chunk.js": "/Uzisha-shop/static/js/787.cda612ba.chunk.js",
+    "static/media/logo.png": "/Uzisha-shop/static/media/logo.baac91e4503b1cb81743.png",
+    "index.html": "/Uzisha-shop/index.html",
+    "main.95fb8764.css.map": "/Uzisha-shop/static/css/main.95fb8764.css.map",
+    "main.f9140ee2.js.map": "/Uzisha-shop/static/js/main.f9140ee2.js.map",
+    "787.cda612ba.chunk.js.map": "/Uzisha-shop/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.95fb8764.css",
+    "static/js/main.f9140ee2.js"
+  ]
+}

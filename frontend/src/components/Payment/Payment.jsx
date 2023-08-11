@@ -4,8 +4,6 @@ import styles from "../../styles/styles";
 import { useEffect } from "react";
 import {
   CardNumberElement,
-  CardCvcElement,
-  CardExpiryElement,
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
@@ -233,25 +231,39 @@ const PaymentInfo = ({
               <div className="flex gap-5 items-center">
                 <img
                   alt="Airtelmoney"
-                  className="w-[100px] h-[50px]"
-                  src="https://i.pinimg.com/474x/43/c7/aa/43c7aa891a73a997e3d014b88d06077a.jpg"
+                  className="w-[50px] h-[50px]"
+                  src="https://www.svgrepo.com/download/190318/sms.svg"
                 />
                 <span>+243 995 868 621</span>
               </div>
-              <div className="w-full flex pb-3 mt-10">
-                <div className="w-[50%]">
-                  <label className="block pb-2">
-                    Please send a proof of payment capture to the seller once
-                    your payment has been made
-                  </label>
-                </div>
+              <div className="flex gap-5 items-center mt-5">
+                <img
+                  alt="Airtelmoney"
+                  className="w-[50px] h-[50px]"
+                  src="https://seeklogo.com/images/M/mail-icon-logo-28FE0635D0-seeklogo.com.png"
+                />
+                <a
+                  href="mailto:vchihisa@gmail.com"
+                  value="Whatsapp"
+                  className={`${styles.button} !bg-[#f63b60] text-[#fff] h-[45px] rounded-[5px] cursor-pointer text-[18px] font-[600]`}
+                >
+                  Send a mail
+                </a>
               </div>
+              <div className="flex gap-5 items-center mt-5">
+                <img
+                  alt="Airtelmoney"
+                  className="w-[50px] h-[50px]"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png"
+                />
 
-              <input
-                type="submit"
-                value="Submit"
-                className={`${styles.button} !bg-[#f63b60] text-[#fff] h-[45px] rounded-[5px] cursor-pointer text-[18px] font-[600]`}
-              />
+                <a
+                  href="https://wa.me/+243995868621"
+                  className={`${styles.button} !bg-[#f63b60] text-[#fff] h-[45px] rounded-[5px] cursor-pointer text-[18px] font-[600]`}
+                >
+                  Whatsapp
+                </a>
+              </div>
             </form>
           </div>
         ) : null}

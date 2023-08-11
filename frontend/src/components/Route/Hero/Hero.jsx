@@ -62,8 +62,8 @@ const Hero = () => {
             />
             <div className={style.text_container}>
               <h6>
-                En achetant sur notre plateforme, vous faites un choix éthique
-                tout en vous faisant plaisir !
+                By buying on our platform, you're making an ethical choice and
+                enjoying yourself at the same time!
               </h6>
             </div>
           </div>
@@ -77,11 +77,11 @@ const Hero = () => {
             />
             <div className={style.text_container}>
               <h6>
-                Bienvenue sur notre plateforme de commerce électronique
-                multivendeur dédiée à la vente de vêtements d'occasion. Nous
-                sommes ravis de vous offrir une expérience de shopping en ligne
-                unique en son genre, où vous pouvez trouver des articles de mode
-                de qualité à des prix abordables.
+                Welcome to our multi-seller e-commerce platform platform
+                dedicated to the sale of second-hand clothing. We are delighted
+                to offer you a unique online shopping experience where you can
+                find quality fashion items at affordable prices. at affordable
+                prices.
               </h6>
             </div>
           </div>
@@ -95,10 +95,10 @@ const Hero = () => {
             />
             <div className={style.text_container}>
               <h6>
-                Notre plateforme regroupe une variété de vendeurs professionnels
-                et particuliers passionnés par la mode et soucieux de
-                l'environnement. Chaque article est soigneusement sélectionné et
-                vérifié pour garantir sa qualité et son authenticité.
+                Our platform brings together a variety of professional and
+                private sellers with a passion for fashion and a concern for the
+                environment. Each item is carefully selected and checked to
+                guarantee its quality and authenticity.
               </h6>
             </div>
           </div>
@@ -112,9 +112,9 @@ const Hero = () => {
             />
             <div className={style.text_container}>
               <h6>
-                Vous trouverez une large gamme de vêtements pour femmes, hommes
-                et enfants, ainsi que des accessoires de mode tels que des sacs
-                à main, des chaussures et des bijoux.{" "}
+                You'll find a wide range of clothing for women, men and
+                children, as well as fashion accessories such as handbags, shoes
+                and jewellery.
               </h6>
             </div>
           </div>
@@ -128,9 +128,8 @@ const Hero = () => {
             />
             <div className={style.text_container}>
               <h6>
-                Nous sommes fiers de contribuer à la réduction des déchets
-                textiles et de promouvoir un mode de vie plus durable en offrant
-                une seconde vie aux vêtements.{" "}
+                We're proud to help reduce textile waste and promote a more
+                sustainable way of life by giving clothes a second life.
               </h6>
             </div>
           </div>

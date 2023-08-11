@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/styles";
-import { Country, State } from "country-state-city";
+
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -11,12 +11,12 @@ import { toast } from "react-toastify";
 const Checkout = () => {
   const { user } = useSelector((state) => state.user);
   const { cart } = useSelector((state) => state.cart);
-  const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("DRC");
+  const [city, setCity] = useState("Nord-kivu");
   const [userInfo, setUserInfo] = useState(false);
-  const [address1, setAddress1] = useState("");
+  const [address1, setAddress1] = useState("Goma");
   const [address2, setAddress2] = useState("");
-  const [zipCode, setZipCode] = useState(null);
+  const [zipCode, setZipCode] = useState(2020);
   const [couponCode, setCouponCode] = useState("");
   const [couponCodeData, setCouponCodeData] = useState(null);
   const [discountPrice, setDiscountPrice] = useState(null);
@@ -66,8 +66,8 @@ const Checkout = () => {
   );
 
   // this is shipping cost variable
-  // const shipping = subTotalPrice * 0.1;
-  const shipping = 0;
+  const shipping = subTotalPrice * 0.1;
+  // const shipping = 0;
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = couponCode;
@@ -216,6 +216,51 @@ const ShippingInfo = ({
         <div className="w-full flex pb-3">
           <div className="w-[50%]">
             <label className="block pb-2">Country</label>
+            <input
+              type="text"
+              required
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              className={`${styles.input} !w-[95%]`}
+            />
+          </div>
+          <div className="w-[50%]">
+            <label className="block pb-2">Province</label>
+            <input
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+              className={`${styles.input}`}
+            />
+          </div>
+        </div>
+
+        <div className="w-full flex pb-3">
+          <div className="w-[50%]">
+            <label className="block pb-2">City</label>
+            <input
+              type="text"
+              required
+              value={address1}
+              onChange={(e) => setAddress1(e.target.value)}
+              className={`${styles.input} !w-[95%]`}
+            />
+          </div>
+
+          <div className="w-[50%]">
+            <label className="block pb-2">Address</label>
+            <input
+              type="text"
+              required
+              value={address2}
+              onChange={(e) => setAddress2(e.target.value)}
+              className={`${styles.input} !w-[95%]`}
+            />
+          </div>
+
+          {/* <div className="w-[50%]">
+            <label className="block pb-2">address</label>
             <select
               className="w-[95%] border h-[40px] rounded-[5px]"
               value={country}
@@ -231,48 +276,7 @@ const ShippingInfo = ({
                   </option>
                 ))}
             </select>
-          </div>
-          <div className="w-[50%]">
-            <label className="block pb-2">Province</label>
-            <select
-              className="w-[95%] border h-[40px] rounded-[5px]"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-            >
-              <option className="block pb-2" value="">
-                Choose your Province
-              </option>
-              {State &&
-                State.getStatesOfCountry(country).map((item) => (
-                  <option key={item.isoCode} value={item.isoCode}>
-                    {item.name}
-                  </option>
-                ))}
-            </select>
-          </div>
-        </div>
-
-        <div className="w-full flex pb-3">
-          <div className="w-[50%]">
-            <label className="block pb-2">City</label>
-            <input
-              type="address"
-              required
-              value={address1}
-              onChange={(e) => setAddress1(e.target.value)}
-              className={`${styles.input} !w-[95%]`}
-            />
-          </div>
-          <div className="w-[50%]">
-            <label className="block pb-2">Address</label>
-            <input
-              type="address"
-              value={address2}
-              onChange={(e) => setAddress2(e.target.value)}
-              required
-              className={`${styles.input}`}
-            />
-          </div>
+          </div> */}
         </div>
 
         <div></div>
@@ -325,17 +329,12 @@ const CartData = ({
         <h5 className="text-[18px] font-[600]">${subTotalPrice}</h5>
       </div>
       <br />
-      <div className="flex justify-between">
+      <div className="flex justify-between border-b pb-3">
         <h3 className="text-[16px] font-[400] text-[#000000a4]">shipping:</h3>
         <h5 className="text-[18px] font-[600]">${shipping.toFixed(2)}</h5>
       </div>
       <br />
-      <div className="flex justify-between border-b pb-3">
-        <h3 className="text-[16px] font-[400] text-[#000000a4]">Discount:</h3>
-        <h5 className="text-[18px] font-[600]">
-          - {discountPercentenge ? "$" + discountPercentenge.toString() : null}
-        </h5>
-      </div>
+
       <h5 className="text-[18px] font-[600] text-end pt-3">${totalPrice}</h5>
       <br />
       {/* <form onSubmit={handleSubmit}>

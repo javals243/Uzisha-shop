@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
+import { Address } from "../../Data/Data";
 
 const Checkout = () => {
   const { user } = useSelector((state) => state.user);
@@ -20,6 +21,7 @@ const Checkout = () => {
   const [couponCode, setCouponCode] = useState("");
   const [couponCodeData, setCouponCodeData] = useState(null);
   const [discountPrice, setDiscountPrice] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -64,10 +66,13 @@ const Checkout = () => {
     (acc, item) => acc + item.qty * item.discountPrice,
     0
   );
-
+  const getPrix = () => {
+    const selectedData = Address.find((data) => data.name === address2);
+    return selectedData ? selectedData.price : 0;
+  };
   // this is shipping cost variable
-  const shipping = subTotalPrice * 0.1;
-  // const shipping = 0;
+  // const shipping = subTotalPrice * 0.1;
+  const shipping = getPrix();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = couponCode;
@@ -102,11 +107,7 @@ const Checkout = () => {
 
   const discountPercentenge = couponCodeData ? discountPrice : "";
 
-  const totalPrice = couponCodeData
-    ? (subTotalPrice + shipping - discountPercentenge).toFixed(2)
-    : (subTotalPrice + shipping).toFixed(2);
-
-  console.log(discountPercentenge);
+  const totalPrice = subTotalPrice + shipping;
 
   return (
     <div className="w-full flex flex-col items-center py-8">
@@ -165,6 +166,10 @@ const ShippingInfo = ({
   zipCode,
   setZipCode,
 }) => {
+  const handleSelectChange = (event) => {
+    setAddress2(event.target.value);
+  };
+
   return (
     <div className="w-full 800px:w-[95%] bg-white rounded-md p-5 pb-8">
       <h5 className="text-[18px] font-[500]">Shipping Address</h5>
@@ -249,34 +254,23 @@ const ShippingInfo = ({
           </div>
 
           <div className="w-[50%]">
-            <label className="block pb-2">Address</label>
-            <input
-              type="text"
-              required
-              value={address2}
-              onChange={(e) => setAddress2(e.target.value)}
-              className={`${styles.input} !w-[95%]`}
-            />
-          </div>
-
-          {/* <div className="w-[50%]">
             <label className="block pb-2">address</label>
             <select
               className="w-[95%] border h-[40px] rounded-[5px]"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
+              value={address2}
+              onChange={handleSelectChange}
             >
               <option className="block pb-2" value="">
-                Choose your country
+                Choose your Address
               </option>
-              {Country &&
-                Country.getAllCountries().map((item) => (
-                  <option key={item.isoCode} value={item.isoCode}>
+              {Address &&
+                Address.map((item) => (
+                  <option key={item.name} value={item.name}>
                     {item.name}
                   </option>
                 ))}
             </select>
-          </div> */}
+          </div>
         </div>
 
         <div></div>
@@ -331,7 +325,7 @@ const CartData = ({
       <br />
       <div className="flex justify-between border-b pb-3">
         <h3 className="text-[16px] font-[400] text-[#000000a4]">shipping:</h3>
-        <h5 className="text-[18px] font-[600]">${shipping.toFixed(2)}</h5>
+        <h5 className="text-[18px] font-[600]">${shipping}</h5>
       </div>
       <br />
 

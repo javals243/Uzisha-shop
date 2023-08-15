@@ -244,8 +244,10 @@ const PaymentInfo = ({
                 />
                 <a
                   href="mailto:vchihisa@gmail.com"
+                  target="_blank"
                   value="Whatsapp"
                   className={`${styles.button} !bg-[#f63b60] text-[#fff] h-[45px] rounded-[5px] cursor-pointer text-[18px] font-[600]`}
+                  rel="noreferrer"
                 >
                   Send a mail
                 </a>
@@ -258,8 +260,10 @@ const PaymentInfo = ({
                 />
 
                 <a
+                  target="_blank"
                   href="https://wa.me/+243995868621"
                   className={`${styles.button} !bg-[#f63b60] text-[#fff] h-[45px] rounded-[5px] cursor-pointer text-[18px] font-[600]`}
+                  rel="noreferrer"
                 >
                   Whatsapp
                 </a>
@@ -308,7 +312,7 @@ const PaymentInfo = ({
                   <PayPalScriptProvider
                     options={{
                       "client-id":
-                        "Aczac4Ry9_QA1t4c7TKH9UusH3RTe6onyICPoCToHG10kjlNdI-qwobbW9JAHzaRQwFMn2-k660853jn",
+                        "AbtMRIu4s3Tvr2S95Xkb8_toz7MGp3dFzU_R5FXeKySoEmgisKvL58jg58D0DHSxCmvPCo-X3F0uizxC",
                     }}
                   >
                     <PayPalButtons
@@ -367,17 +371,12 @@ const CartData = ({ orderData }) => {
         <h5 className="text-[18px] font-[600]">${orderData?.subTotalPrice}</h5>
       </div>
       <br />
-      <div className="flex justify-between">
+      <div className="flex justify-between border-b pb-3">
         <h3 className="text-[16px] font-[400] text-[#000000a4]">shipping:</h3>
         <h5 className="text-[18px] font-[600]">${shipping}</h5>
       </div>
       <br />
-      <div className="flex justify-between border-b pb-3">
-        <h3 className="text-[16px] font-[400] text-[#000000a4]">Discount:</h3>
-        <h5 className="text-[18px] font-[600]">
-          {orderData?.discountPrice ? "$" + orderData.discountPrice : "-"}
-        </h5>
-      </div>
+
       <h5 className="text-[18px] font-[600] text-end pt-3">
         ${orderData?.totalPrice}
       </h5>

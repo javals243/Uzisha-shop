@@ -85,3 +85,78 @@ export const UpdatesData = [
     time: "2 hours ago",
   },
 ];
+export const Address = [
+  {
+    name: "Kahembe",
+    price: 0.5,
+  },
+  {
+    name: "Murara",
+    price: "has ordered Apple smart watch 2500mh battery.",
+  },
+  {
+    name: "Bujovu",
+    price: 0.5,
+  },
+  {
+    id: 4,
+    name: "Majengo",
+    price: "has ordered Apple smart watch 2500mh battery.",
+  },
+  {
+    name: "Mabanga nord",
+    price: 0.7,
+  },
+  {
+    name: "Mabanga sud",
+    price: 0.8,
+  },
+  {
+    name: "Kasika",
+    price: 0.8,
+  },
+  {
+    name: "Ka toyi",
+    price: 0.9,
+  },
+  {
+    name: "Ndosho",
+    price: 1,
+  },
+  {
+    name: "Mugunga",
+    price: 1.2,
+  },
+  {
+    name: "Virunga",
+    price: 0.4,
+  },
+  {
+    name: "Les Volcans",
+    price: 0.3,
+  },
+  {
+    name: "Mikeno",
+    price: 0.7,
+  },
+  {
+    name: "Mapendo",
+    price: 0.5,
+  },
+  {
+    name: "Katindo",
+    price: 0.7,
+  },
+  {
+    name: "Himbi",
+    price: 0.6,
+  },
+  {
+    name: "Keshero",
+    price: 0.9,
+  },
+  {
+    name: " Lac Vert",
+    price: 1.4,
+  },
+];

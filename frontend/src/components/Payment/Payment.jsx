@@ -234,7 +234,7 @@ const PaymentInfo = ({
                   className="w-[50px] h-[50px]"
                   src="https://www.svgrepo.com/download/190318/sms.svg"
                 />
-                <span>+243 995 868 621</span>
+                <span>+243 998 858 645</span>
               </div>
               <div className="flex gap-5 items-center mt-5">
                 <img
@@ -243,9 +243,9 @@ const PaymentInfo = ({
                   src="https://seeklogo.com/images/M/mail-icon-logo-28FE0635D0-seeklogo.com.png"
                 />
                 <a
-                  href="mailto:vchihisa@gmail.com"
+                  href="mailto:rubakarepatient@gmail.com"
                   target="_blank"
-                  value="Whatsapp"
+                  value="Message"
                   className={`${styles.button} !bg-[#f63b60] text-[#fff] h-[45px] rounded-[5px] cursor-pointer text-[18px] font-[600]`}
                   rel="noreferrer"
                 >
@@ -254,14 +254,14 @@ const PaymentInfo = ({
               </div>
               <div className="flex gap-5 items-center mt-5">
                 <img
-                  alt="Airtelmoney"
+                  alt="whatsapp"
                   className="w-[50px] h-[50px]"
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png"
                 />
 
                 <a
                   target="_blank"
-                  href="https://wa.me/+243995868621"
+                  href="https://wa.me/+243998858645"
                   className={`${styles.button} !bg-[#f63b60] text-[#fff] h-[45px] rounded-[5px] cursor-pointer text-[18px] font-[600]`}
                   rel="noreferrer"
                 >

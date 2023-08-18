@@ -128,7 +128,7 @@ const Payment = () => {
           order.paymnentInfo = {
             id: result.paymentIntent.id,
             status: result.paymentIntent.status,
-            type: "Credit Card",
+            type: "mobile money",
           };
 
           await axios
@@ -147,9 +147,58 @@ const Payment = () => {
       toast.error(error);
     }
   };
+  const mailDeliveryHandler = async (e) => {
+    e.preventDefault();
+    window.open("mailto:rubakarepatient@gmail.com", "_blank");
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
+    order.paymentInfo = {
+      type: "Mobile payment",
+    };
+
+    await axios
+      .post(`${server}/order/create-order`, order, config)
+      .then((res) => {
+        setOpen(false);
+        navigate("/order/success");
+        toast.success("Order successful!");
+        localStorage.setItem("cartItems", JSON.stringify([]));
+        localStorage.setItem("latestOrder", JSON.stringify([]));
+        window.location.reload();
+      });
+  };
   const cashOnDeliveryHandler = async (e) => {
     e.preventDefault();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    order.paymentInfo = {
+      type: "Cash On Delivery",
+    };
+
+    await axios
+      .post(`${server}/order/create-order`, order, config)
+      .then((res) => {
+        setOpen(false);
+        navigate("/order/success");
+        toast.success("Order successful!");
+        localStorage.setItem("cartItems", JSON.stringify([]));
+        localStorage.setItem("latestOrder", JSON.stringify([]));
+        window.location.reload();
+      });
+  };
+
+  const whatsappDeliveryHandler = async (e) => {
+    e.preventDefault();
+    window.open("https://wa.me/+243998858645", "_blank");
 
     const config = {
       headers: {
@@ -185,6 +234,8 @@ const Payment = () => {
             createOrder={createOrder}
             paymentHandler={paymentHandler}
             cashOnDeliveryHandler={cashOnDeliveryHandler}
+            mailDeliveryHandler={mailDeliveryHandler}
+            whatsappDeliveryHandler={whatsappDeliveryHandler}
           />
         </div>
         <div className="w-full 800px:w-[35%] 800px:mt-0 mt-8">
@@ -201,7 +252,8 @@ const PaymentInfo = ({
   setOpen,
   onApprove,
   createOrder,
-  paymentHandler,
+  whatsappDeliveryHandler,
+  mailDeliveryHandler,
   cashOnDeliveryHandler,
 }) => {
   const [select, setSelect] = useState(1);
@@ -227,7 +279,10 @@ const PaymentInfo = ({
         {/* pay with card */}
         {select === 1 ? (
           <div className="w-full flex border-b">
-            <form className="w-full" onSubmit={paymentHandler}>
+            <div className="w-full">
+              <h2 className="text-center text-xl py-5">
+                Please select from the three methods
+              </h2>
               <div className="flex gap-5 items-center">
                 <img
                   alt="Airtelmoney"
@@ -242,15 +297,13 @@ const PaymentInfo = ({
                   className="w-[50px] h-[50px]"
                   src="https://seeklogo.com/images/M/mail-icon-logo-28FE0635D0-seeklogo.com.png"
                 />
-                <a
-                  href="mailto:rubakarepatient@gmail.com"
-                  target="_blank"
-                  value="Message"
+                <button
+                  onClick={mailDeliveryHandler}
                   className={`${styles.button} !bg-[#f63b60] text-[#fff] h-[45px] rounded-[5px] cursor-pointer text-[18px] font-[600]`}
                   rel="noreferrer"
                 >
                   Send a mail
-                </a>
+                </button>
               </div>
               <div className="flex gap-5 items-center mt-5">
                 <img
@@ -259,16 +312,16 @@ const PaymentInfo = ({
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png"
                 />
 
-                <a
-                  target="_blank"
+                <button
+                  onClick={whatsappDeliveryHandler}
                   href="https://wa.me/+243998858645"
                   className={`${styles.button} !bg-[#f63b60] text-[#fff] h-[45px] rounded-[5px] cursor-pointer text-[18px] font-[600]`}
                   rel="noreferrer"
                 >
                   Whatsapp
-                </a>
+                </button>
               </div>
-            </form>
+            </div>
           </div>
         ) : null}
       </div>

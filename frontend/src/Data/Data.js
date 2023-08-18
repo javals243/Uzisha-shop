@@ -12,6 +12,7 @@ import img3 from "../imgs/img3.png";
 // Sidebar Data
 
 // Analytics Cards Data
+
 export const cardsData = [
   {
     title: "Sales",

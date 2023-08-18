@@ -93,7 +93,7 @@ export const Address = [
   },
   {
     name: "Murara",
-    price: "has ordered Apple smart watch 2500mh battery.",
+    price: 0.3,
   },
   {
     name: "Bujovu",
@@ -102,7 +102,7 @@ export const Address = [
   {
     id: 4,
     name: "Majengo",
-    price: "has ordered Apple smart watch 2500mh battery.",
+    price: 0.6,
   },
   {
     name: "Mabanga nord",

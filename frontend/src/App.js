@@ -61,6 +61,7 @@ import { server } from "./server";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import ShopUpdateProduct from "./pages/Shop/ShopUpdateProduct";
+import ShopUpdatePassword from "./components/Shop/ShopUpdatePassword";
 
 const App = () => {
   const [stripeApikey, setStripeApiKey] = useState("");
@@ -107,7 +108,6 @@ const App = () => {
         />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
-
         <Route path="/best-selling" element={<BestSellingPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/faq" element={<FAQPage />} />
@@ -212,7 +212,6 @@ const App = () => {
             </SellerProtectedRoute>
           }
         />
-
         <Route
           path="/order/:id"
           element={
@@ -302,6 +301,15 @@ const App = () => {
             </ProtectedAdminRoute>
           }
         />
+        <Route
+          path="/shop/updatePassword/:id"
+          element={
+            <ProtectedAdminRoute>
+              <ShopUpdatePassword />
+            </ProtectedAdminRoute>
+          }
+        />
+
         <Route
           path="/admin-products"
           element={

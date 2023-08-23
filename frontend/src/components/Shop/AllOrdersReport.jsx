@@ -35,7 +35,6 @@ const AllOrdersReport = () => {
     <div>
       <h2>Seller Orders</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="shopId">Shop ID: {seller._id}</label>
         <input
           type="text"
           id="shopId"

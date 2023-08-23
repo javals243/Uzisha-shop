@@ -28,7 +28,6 @@ const DashboardSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-
       <div className="w-full flex items-center p-4">
         <Link to="/dashboard-orders" className="w-full flex items-center">
           <FiShoppingBag
@@ -57,7 +56,6 @@ const DashboardSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-
       <div className="w-full flex items-center p-4">
         <Link
           to="/dashboard-create-product"
@@ -76,7 +74,6 @@ const DashboardSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-
       {/* <div className="w-full flex items-center p-4">
         <Link to="/dashboard-events" className="w-full flex items-center">
           <MdOutlineLocalOffer
@@ -92,7 +89,6 @@ const DashboardSideBar = ({ active }) => {
           </h5>
         </Link>
       </div> */}
-
       {/* <div className="w-full flex items-center p-4">
         <Link to="/dashboard-create-event" className="w-full flex items-center">
           <VscNewFile
@@ -108,8 +104,7 @@ const DashboardSideBar = ({ active }) => {
           </h5>
         </Link>
       </div> */}
-
-      <div className="w-full flex items-center p-4">
+      {/* <div className="w-full flex items-center p-4">
         <Link
           to="/dashboard-withdraw-money"
           className="w-full flex items-center"
@@ -126,8 +121,7 @@ const DashboardSideBar = ({ active }) => {
             Withdraw Money
           </h5>
         </Link>
-      </div>
-
+      </div> */}
       <div className="w-full flex items-center p-4">
         <Link to="/dashboard-messages" className="w-full flex items-center">
           <BiMessageSquareDetail
@@ -143,7 +137,6 @@ const DashboardSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-
       {/* <div className="w-full flex items-center p-4">
         <Link to="/dashboard-coupouns" className="w-full flex items-center">
           <AiOutlineGift
@@ -159,7 +152,6 @@ const DashboardSideBar = ({ active }) => {
           </h5>
         </Link>
       </div> */}
-
       {/* <div className="w-full flex items-center p-4">
         <Link to="/dashboard-refunds" className="w-full flex items-center">
           <HiOutlineReceiptRefund
@@ -176,6 +168,24 @@ const DashboardSideBar = ({ active }) => {
         </Link>
       </div> */}
 
+      <div className="w-full flex items-center p-4">
+        <Link
+          to="/dashboard-orders-report"
+          className="w-full flex items-center"
+        >
+          <FiShoppingBag
+            size={30}
+            color={`${active === 10 ? "crimson" : "#555"}`}
+          />
+          <h5
+            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
+              active === 10 ? "text-[crimson]" : "text-[#555]"
+            }`}
+          >
+            Report
+          </h5>
+        </Link>
+      </div>
       <div className="w-full flex items-center p-4">
         <Link to="/settings" className="w-full flex items-center">
           <CiSettings

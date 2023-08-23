@@ -64,6 +64,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import ShopUpdateProduct from "./pages/Shop/ShopUpdateProduct";
 import ShopUpdatePassword from "./components/Shop/ShopUpdatePassword";
+import ShopAllOrdersReport from "./pages/Shop/ShopAllOrdersReport";
 
 const App = () => {
   const [stripeApikey, setStripeApiKey] = useState("");
@@ -203,6 +204,14 @@ const App = () => {
           element={
             <SellerProtectedRoute>
               <ShopAllOrders />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard-orders-report"
+          element={
+            <SellerProtectedRoute>
+              <ShopAllOrdersReport />
             </SellerProtectedRoute>
           }
         />

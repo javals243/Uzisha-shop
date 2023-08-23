@@ -54,6 +54,7 @@ const Payment = () => {
     shippingAddress: orderData?.shippingAddress,
     user: user && user,
     totalPrice: orderData?.totalPrice,
+    shipping: orderData?.shipping?.toFixed(2)
   };
 
   const onApprove = async (data, actions) => {

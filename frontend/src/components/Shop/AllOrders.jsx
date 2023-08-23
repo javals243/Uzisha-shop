@@ -79,7 +79,7 @@ const AllOrders = () => {
         status: item.status,
       });
     });
-
+console.log("All oders are", orders)
   return (
     <>
       {isLoading ? (

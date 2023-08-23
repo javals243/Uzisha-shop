@@ -7,6 +7,7 @@ import { getAllOrdersOfShop } from "../../redux/actions/order";
 import { server } from "../../server";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Invoice from "../invoice/Invoice";
 
 const OrderDetails = () => {
   const { orders, isLoading } = useSelector((state) => state.order);
@@ -58,9 +59,6 @@ const OrderDetails = () => {
         toast.error(error.response.data.message);
       });
   };
-  const HandlePrint = () => {
-    window.print();
-  };
 
   return (
     <div className={`py-4 min-h-screen ${styles.section}`}>
@@ -76,12 +74,8 @@ const OrderDetails = () => {
             Order List
           </div>
         </Link>
-        <div
-          onClick={HandlePrint}
-          className={`${styles.button} !bg-[#fce1e6] !rounded-[4px] text-[#e94560] font-[600] !h-[45px] text-[18px]`}
-        >
-          Imprimer
-        </div>
+
+        <Invoice good={data}>SHOW INVOICE </Invoice>
       </div>
 
       <div className="w-full flex items-center justify-between pt-6">
@@ -113,7 +107,7 @@ const OrderDetails = () => {
           </div>
         ))}
       <h5 className="py-10 text-[18px]">
-        Note: There is a transport price incorporated depending on the location
+       Transport cost : <strong>US${data?.shipping}</strong>
       </h5>
       <div className="border-t w-full text-right">
         <h5 className="pt-3 text-[18px]">

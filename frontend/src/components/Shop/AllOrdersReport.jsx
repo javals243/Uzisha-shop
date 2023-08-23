@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { server } from "../../server";
-import OrdrereportSheet from "./OrdrereportSheet";
-import OrderReport from "../OrderRapport/OrderReport";
 
 const AllOrdersReport = () => {
   const { seller } = useSelector((state) => state.seller);

@@ -117,7 +117,7 @@ const AdminSideBar = ({ active }) => {
               active === 7 ? "text-[crimson]" : "text-[#555]"
             }`}
           >
-            Withdraw Request
+            Reporting
           </h5>
         </Link>
       </div>

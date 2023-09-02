@@ -338,7 +338,7 @@ const App = () => {
           }
         />
         <Route
-          path="/admin-withdraw-request"
+          path="/admin-report-request"
           element={
             <ProtectedAdminRoute>
               <AdminDashboardWithdraw />

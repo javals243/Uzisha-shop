@@ -33,79 +33,85 @@ const AllOrdersReport = () => {
   const data = orders && orders.find((item) => item._id === seller._id);
   return (
     <div>
-      <h2>Seller Orders</h2>
-      <form onSubmit={handleSubmit}>
-        <input
+      <h2 className="font-bold text-[30px] m-5 text-center">Seller Orders</h2>
+      <form onSubmit={handleSubmit} className="gap-5">
+        {/* <input
           type="text"
           id="shopId"
           value={shopId}
           onChange={(e) => setShopId(e.target.value)}
-        />
-        <br />
+        /> */}
+
         <label htmlFor="fromDate">From Date:</label>
         <input
           type="date"
           id="fromDate"
           value={fromDate}
           onChange={(e) => setFromDate(e.target.value)}
+          className="mr-10"
         />
-        <br />
+
         <label htmlFor="toDate">To Date:</label>
         <input
           type="date"
           id="toDate"
           value={toDate}
           onChange={(e) => setToDate(e.target.value)}
+          className="mr-10"
         />
-        <br />
-        <button type="submit">Search</button>
+
+        <button
+          type="submit"
+          className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer"
+        >
+          Search
+        </button>
       </form>
-      <>
-        <div className="wrapper">
-          <div className="good-sheet">
-            <div className="header">
-              <span className="title">ORDER DETAILS</span>
 
-              <span className="kws">BSHOP online Shop</span>
-            </div>
+      <div className="wrapper">
+        <div className="good-sheet">
+          <div className="header">
+            <span className="title">ORDER DETAILS</span>
 
-            {orders.map((order) => (
-              <>
-                <div className=" mt-10 uppercase">
-                  Customer name :
-                  <span className="text-lg font-bold">{order.user.name}</span>
-                </div>
-
-                <div className="table-container mt-10">
-                  <table>
-                    <tr>
-                      <th>Products</th>
-                      <th>Quantity</th>
-                      <th>Price</th>
-                    </tr>
-                    {order &&
-                      order?.cart.map((item, index) => (
-                        <tr>
-                          <td>{item.name}</td>
-                          <td>{item.qty}</td>
-                          <td>{item.discountPrice}</td>
-                        </tr>
-                      ))}
-                  </table>
-                  <h5 className="pt-3 text-[18px]">
-                    Transport cost : <strong>US${order?.shipping}</strong>
-                  </h5>
-                  <div className="border-t w-full text-right">
-                    <h5 className="pt-3 text-[18px]">
-                      Total Price: <strong>US${order?.totalPrice}</strong>
-                    </h5>
-                  </div>
-                </div>
-              </>
-            ))}
+            <span className="kws">BSHOP online Shop</span>
           </div>
+
+          {orders.map((order) => (
+            <>
+              <div className=" mt-10 uppercase">
+                Customer name :
+                <span className="text-lg font-bold">{order.user.name}</span>
+              </div>
+
+              <div className="table-container mt-10">
+                <table>
+                  <tr>
+                    <th>Products</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                  </tr>
+                  {order &&
+                    order?.cart.map((item, index) => (
+                      <tr>
+                        <td>{item.name}</td>
+                        <td>{item.qty}</td>
+                        <td>{item.discountPrice}</td>
+                      </tr>
+                    ))}
+                </table>
+                <h5 className="pt-3 text-[18px]">
+                  Transport cost : <strong>US${order?.shipping}</strong>
+                </h5>
+                <div className="border-t w-full text-right">
+                  <h5 className="pt-3 text-[18px]">
+                    Total Price: <strong>US${order?.totalPrice}</strong>
+                  </h5>
+                </div>
+              </div>
+            </>
+          ))}
         </div>
-      </>
+      </div>
     </div>
   );
 };

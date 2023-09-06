@@ -1,11 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { server } from "../../server";
+import ReactToPrint from "react-to-print";
+import { Button } from "react-bootstrap";
+import SellerOrders from "../sellerOrders/SellerOrders";
 
 const AllOrdersReport = () => {
   const { seller } = useSelector((state) => state.seller);
+
+  const componentRef = useRef();
+
+  const pageStyle = `
+   @media print {
+      @page {
+         size: a5 portrait;
+      }
+   
+      .voucher {
+         padding: 1rem 0.5rem;
+      }
+   }
+   `;
 
   const [shopId, setShopId] = useState("");
   const [fromDate, setFromDate] = useState("");
@@ -29,7 +46,7 @@ const AllOrdersReport = () => {
       console.log(error);
     }
   };
-  console.log("Orders", orders);
+
   const data = orders && orders.find((item) => item._id === seller._id);
   return (
     <div>
@@ -67,6 +84,9 @@ const AllOrdersReport = () => {
           Search
         </button>
       </form>
+      <div className="m-10">
+        <SellerOrders good={orders}>SHOW ORDER DETAILS </SellerOrders>
+      </div>
 
       <div className="wrapper">
         <div className="good-sheet">

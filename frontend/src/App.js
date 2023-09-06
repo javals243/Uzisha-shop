@@ -46,6 +46,7 @@ import {
   AdminDashboardProducts,
   AdminDashboardEvents,
   AdminDashboardWithdraw,
+  AdminDashboardOrdersReport,
 } from "./routes/AdminRoutes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -341,7 +342,7 @@ const App = () => {
           path="/admin-report-request"
           element={
             <ProtectedAdminRoute>
-              <AdminDashboardWithdraw />
+              <AdminDashboardOrdersReport />
             </ProtectedAdminRoute>
           }
         />

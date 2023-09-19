@@ -99,7 +99,7 @@ const AdminDashboardOrdersReport = () => {
             <div className="flex justify-center gap-5">
               <Financial good={adminOrders}>Show Details Report </Financial>
               <FinancialCustomer good={adminOrders}>
-                Show Report by customer{" "}
+                Show Report by Seller
               </FinancialCustomer>
             </div>
             <div className="w-[97%] flex justify-center">

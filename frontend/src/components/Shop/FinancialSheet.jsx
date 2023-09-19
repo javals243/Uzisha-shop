@@ -16,12 +16,12 @@ const FinancialSheet = React.forwardRef(({ good }, ref) => {
         createdAt: item?.createdAt.slice(0, 10),
       });
     });
-  console.log("rows are ", row);
+  console.log("rows are so fun", row);
   return (
     <div className="wrapper">
       <div className="good-sheet" ref={ref}>
         <div className="header">
-          <span className="title">Financial Report </span>
+          <span className="title">Financial Report Details </span>
 
           <span className="kws">BSHOP online Shop</span>
         </div>

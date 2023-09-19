@@ -5,6 +5,7 @@ import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersOfAdmin } from "../redux/actions/order";
 import Financial from "../components/financialReport/Financial";
+import FinancialCustomer from "../components/FinancialCustomer/FinancialCustomer";
 
 const AdminDashboardOrdersReport = () => {
   const dispatch = useDispatch();
@@ -95,7 +96,12 @@ const AdminDashboardOrdersReport = () => {
 
           <div className="w-full min-h-[45vh] pt-5 rounded flex flex-col gap-5 justify-center">
             <h1 className="text-center text-[30px]">Financial Report</h1>
-            <Financial good={adminOrders}>Show Report </Financial>
+            <div className="flex justify-center gap-5">
+              <Financial good={adminOrders}>Show Details Report </Financial>
+              <FinancialCustomer good={adminOrders}>
+                Show Report by customer{" "}
+              </FinancialCustomer>
+            </div>
             <div className="w-[97%] flex justify-center">
               <DataGrid
                 rows={row}

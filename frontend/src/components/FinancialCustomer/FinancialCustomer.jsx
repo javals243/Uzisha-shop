@@ -3,10 +3,9 @@ import { Button, Modal } from "react-bootstrap";
 
 import "./style.css";
 import ReactToPrint from "react-to-print";
+import FinancialSheetCustomer from "../Shop/FinancialSheetCustomer";
 
-import InvoiceSheet from "../Shop/SellerOrdersSheet";
-
-const Invoice = ({ children, good }) => {
+const FinancialCustomer = ({ children, good }) => {
   const [showModal, setShowModal] = React.useState(false);
 
   const handleShow = () => setShowModal(true);
@@ -53,7 +52,7 @@ const Invoice = ({ children, good }) => {
                   </button>
                 </div> */}
                 {/*body*/}
-                <InvoiceSheet good={good} ref={componentRef} />
+                <FinancialSheetCustomer good={good} ref={componentRef} />
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
@@ -85,4 +84,4 @@ const Invoice = ({ children, good }) => {
   );
 };
 
-export default Invoice;
+export default FinancialCustomer;

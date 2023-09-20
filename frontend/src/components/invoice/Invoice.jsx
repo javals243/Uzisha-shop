@@ -1,10 +1,9 @@
-import React, { useRef, useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import React, { useRef } from "react";
+import { Button } from "react-bootstrap";
 
 import "./style.css";
 import ReactToPrint from "react-to-print";
-
-import InvoiceSheet from "../Shop/SellerOrdersSheet";
+import InvoiceSheet from "../Shop/InvoiceSheet";
 
 const Invoice = ({ children, good }) => {
   const [showModal, setShowModal] = React.useState(false);
